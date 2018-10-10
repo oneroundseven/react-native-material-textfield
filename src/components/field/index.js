@@ -41,6 +41,7 @@ export default class TextField extends PureComponent {
     textColor: 'rgba(0, 0, 0, .87)',
     baseColor: 'rgba(0, 0, 0, .38)',
 
+    errorNumberOfLines: 1,
     errorColor: 'rgb(213, 0, 0)',
 
     lineWidth: StyleSheet.hairlineWidth,
@@ -77,6 +78,7 @@ export default class TextField extends PureComponent {
     characterRestriction: PropTypes.number,
 
     error: PropTypes.string,
+    errorNumberOfLines: PropTypes.number,
     errorColor: PropTypes.string,
 
     lineWidth: PropTypes.number,
@@ -346,6 +348,7 @@ export default class TextField extends PureComponent {
       tintColor,
       baseColor,
       textColor,
+      errorNumberOfLines,
       errorColor,
       lineWidth,
       activeLineWidth,
@@ -539,8 +542,8 @@ export default class TextField extends PureComponent {
 
         <Animated.View style={helperContainerStyle}>
           <View style={styles.flex}>
-            <Helper style={[errorStyle, titleTextStyle]}>{error}</Helper>
-            <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
+            <Helper style={[errorStyle, titleTextStyle]} numberOfLines={errorNumberOfLines}>{error}</Helper>
+            <Helper style={[titleStyle, titleTextStyle]} numberOfLines={errorNumberOfLines}>{title}</Helper>
           </View>
 
           <Counter {...counterProps} />
