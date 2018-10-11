@@ -426,7 +426,7 @@ export default class TextField extends PureComponent {
 
     let errorStyle = {
       color: errorColor,
-
+      lineHeight: titleFontSize * 1.5,
       opacity: focus.interpolate({
         inputRange: [-1, 0, 1],
         outputRange: [1, 0, 0],
@@ -442,7 +442,7 @@ export default class TextField extends PureComponent {
 
     let titleStyle = {
       color: baseColor,
-
+      lineHeight: titleFontSize * 1.5,
       opacity: focus.interpolate({
         inputRange: [-1, 0, 1],
         outputRange: [0, 1, 1],
@@ -453,12 +453,12 @@ export default class TextField extends PureComponent {
 
     let helperContainerStyle = {
       flexDirection: 'row',
-      height: (title || limit)?
-        titleFontSize * 2:
-        focus.interpolate({
-          inputRange:  [-1, 0, 1],
-          outputRange: [titleFontSize * 2, 8, 8],
-        }),
+      // height: (title || limit)?
+      //   titleFontSize * 1.5:
+      //   focus.interpolate({
+      //     inputRange:  [-1, 0, 1],
+      //     outputRange: [titleFontSize * 1.5, 8, 8],
+      //   }),
     };
 
     let containerProps = {
@@ -541,9 +541,9 @@ export default class TextField extends PureComponent {
         </Animated.View>
 
         <Animated.View style={helperContainerStyle}>
-          <View style={styles.flex}>
+          <View style={{ marginVertical: 5 }}>
             <Helper style={[errorStyle, titleTextStyle]} numberOfLines={errorNumberOfLines}>{error}</Helper>
-            <Helper style={[titleStyle, titleTextStyle]} numberOfLines={errorNumberOfLines}>{title}</Helper>
+            <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
           </View>
 
           <Counter {...counterProps} />

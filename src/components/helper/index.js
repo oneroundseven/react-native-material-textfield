@@ -20,6 +20,8 @@ export default class Helper extends PureComponent {
   render() {
     let { children, style, ...props } = this.props;
 
+    if (!children) return null;
+
     return (
       <View style={styles.container}>
         <Animated.Text style={[styles.text, style]} {...props}>
