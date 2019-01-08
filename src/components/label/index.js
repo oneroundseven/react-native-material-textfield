@@ -102,12 +102,18 @@ export default class Label extends PureComponent {
         outputRange: [errorColor, baseColor, tintColor],
       });
 
-    let top = input.interpolate({
+      let start = (style.animateStart || baseSize + fontSize * 0.25);
+      let end = baseSize - basePadding - activeFontSize;
+      if (typeof style.animateEnd !== 'undefined') {
+          end = style.animateEnd;
+      }
+
+      let top = input.interpolate({
       inputRange: [0, 1],
       outputRange: [
-        baseSize + fontSize * 0.25,
-        baseSize - basePadding - activeFontSize,
-      ],
+        start,
+        end
+      ]
     });
 
     let textStyle = {
