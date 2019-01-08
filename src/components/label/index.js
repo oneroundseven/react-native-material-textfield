@@ -92,6 +92,7 @@ export default class Label extends PureComponent {
       active, 
       focused,
       animationDuration,
+      labelPosition,
       ...props
     } = this.props;
 
@@ -102,10 +103,16 @@ export default class Label extends PureComponent {
         outputRange: [errorColor, baseColor, tintColor],
       });
 
-      let start = (style.animateStart || baseSize + fontSize * 0.25);
+      let start = baseSize + fontSize * 0.25;
       let end = baseSize - basePadding - activeFontSize;
-      if (typeof style.animateEnd !== 'undefined') {
-          end = style.animateEnd;
+      if (labelPosition) {
+        if (typeof labelPosition.start !== 'undefined') {
+            start = labelPosition.start;
+        }
+
+        if (typeof labelPosition.end !== 'undefined') {
+            end = labelPosition.end;
+        }
       }
 
       let top = input.interpolate({

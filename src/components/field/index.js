@@ -355,6 +355,7 @@ export default class TextField extends PureComponent {
       containerStyle,
       inputContainerStyle: inputContainerStyleOverrides,
       clearTextOnFocus,
+      labelPosition,
       ...props
     } = this.props;
 
@@ -497,7 +498,8 @@ export default class TextField extends PureComponent {
       focused,
       errored,
       restricted,
-      style: labelTextStyle,
+      labelPosition,
+      style: labelTextStyle
     };
 
     let counterProps = {
