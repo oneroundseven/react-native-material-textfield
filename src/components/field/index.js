@@ -541,7 +541,7 @@ export default class TextField extends PureComponent {
         </Animated.View>
 
         <Animated.View style={helperContainerStyle}>
-          <View style={{ marginVertical: 5 }}>
+          <View>
             <Helper style={[errorStyle, titleTextStyle]} numberOfLines={errorNumberOfLines}>{error}</Helper>
             <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
           </View>
