@@ -105,7 +105,10 @@ export default class Label extends PureComponent {
 
       let start = baseSize + fontSize * 0.25;
       let end = baseSize - basePadding - activeFontSize;
-      let left = style.left;
+      let left = 0;
+      if (style && style.left) {
+        left = style.left
+      }
       if (labelPosition) {
         if (typeof labelPosition.start !== 'undefined') {
             start = labelPosition.start;
