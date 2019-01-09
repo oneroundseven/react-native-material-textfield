@@ -118,7 +118,7 @@ export default class Label extends PureComponent {
         if (labelPosition.left) {
             left = input.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, -labelPosition.left]
+                outputRange: [labelPosition.left, 0]
             })
         }
       }
