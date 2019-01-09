@@ -105,6 +105,7 @@ export default class Label extends PureComponent {
 
       let start = baseSize + fontSize * 0.25;
       let end = baseSize - basePadding - activeFontSize;
+      let left = style.left;
       if (labelPosition) {
         if (typeof labelPosition.start !== 'undefined') {
             start = labelPosition.start;
@@ -113,15 +114,22 @@ export default class Label extends PureComponent {
         if (typeof labelPosition.end !== 'undefined') {
             end = labelPosition.end;
         }
+
+        if (labelPosition.left) {
+            left = input.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, -labelPosition.left]
+            })
+        }
       }
 
       let top = input.interpolate({
-      inputRange: [0, 1],
-      outputRange: [
-        start,
-        end
-      ]
-    });
+        inputRange: [0, 1],
+          outputRange: [
+            start,
+            end
+          ]
+      });
 
     let textStyle = {
       fontSize: input.interpolate({
@@ -135,6 +143,7 @@ export default class Label extends PureComponent {
     let containerStyle = {
       position: 'absolute',
       top,
+      left,
     };
 
     return (
