@@ -371,7 +371,10 @@ export default class TextField extends PureComponent {
       text;
 
     let active = !!(value || props.placeholder);
-    let count = value.length;
+    let count = 0;
+    if (value) {
+      count = value.length;
+    }
     let restricted = limit < count;
 
     let textAlign = I18nManager.isRTL?
